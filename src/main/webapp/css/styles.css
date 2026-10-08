@@ -1,0 +1,551 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ============================= */
+/* CONTENEDOR GENERAL */
+/* ============================= */
+
+.container {
+    width: min(1100px, calc(100% - 32px));
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================= */
+/* TITULOS */
+/* ============================= */
+
+h1 {
+    color: #0f172a;
+    margin-bottom: 18px;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+}
+
+p {
+    margin-bottom: 20px;
+    color: #4b5563;
+}
+
+/* ============================= */
+/* HERO / INICIO */
+/* ============================= */
+
+.hero {
+    text-align: center;
+    padding: 24px 0;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 0 auto 24px;
+    font-size: 1.05rem;
+}
+
+.badge {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.menu-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* ============================= */
+/* BOTONES */
+/* ============================= */
+
+.btn,
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+            background 0.25s ease,
+            transform 0.15s ease,
+            box-shadow 0.25s ease;
+}
+
+.btn:hover,
+button:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: #64748b;
+}
+
+.btn-secondary:hover {
+    background: #475569;
+}
+
+.btn-danger {
+    background: #dc2626;
+}
+
+.btn-danger:hover {
+    background: #b91c1c;
+}
+
+/* ============================= */
+/* ACCIONES */
+/* ============================= */
+
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.inline-form {
+    display: inline-flex;
+}
+
+/* ============================= */
+/* TABLA */
+/* ============================= */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: auto auto;
+    border-radius: 10px;
+
+}
+
+table {
+    width: 80%;
+    min-width: 760px;
+    border-collapse: collapse;
+    background: #ffffff;
+}
+
+thead {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+th,
+td {
+    padding: 13px 14px;
+    border: 1px solid #dbe3ee;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    white-space: nowrap;
+}
+
+tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+tbody tr:hover {
+    background: #eef4ff;
+}
+
+/* ============================= */
+/* FORMULARIOS */
+/* ============================= */
+
+.form-card {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+    color: #334155;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #ffffff;
+    outline: none;
+    transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    body {
+        background: #ffffff;
+    }
+
+    .container {
+        width: 100%;
+        margin: 0;
+        min-height: 100vh;
+        padding: 24px 18px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .hero {
+        padding-top: 40px;
+    }
+
+    .menu-buttons,
+    .actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .menu-buttons .btn,
+    .actions .btn {
+        width: 100%;
+    }
+
+    .form-card {
+        max-width: 100%;
+    }
+
+    .form-card .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    th,
+    td {
+        padding: 11px;
+        font-size: 14px;
+    }
+
+    .inline-form {
+        display: block;
+        margin-top: 8px;
+    }
+
+    td .btn,
+    td button {
+        width: 100%;
+        margin-bottom: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .container {
+        padding: 20px 14px;
+    }
+
+    h1 {
+        font-size: 1.65rem;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        font-size: 16px;
+    }
+
+    .btn,
+    button {
+        width: 100%;
+        padding: 12px 14px;
+    }
+}
+
+/* ================================= */
+/* PÁGINA DE PRODUCTOS */
+/* ================================= */
+
+.products-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.products-header h1 {
+    margin: 4px 0 6px;
+}
+
+.products-header p {
+    margin: 0;
+    color: #64748b;
+}
+
+.page-eyebrow {
+    display: block;
+    margin-bottom: 6px;
+    color: #2563eb;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.products-toolbar {
+    margin-bottom: 20px;
+}
+
+.back-link {
+    color: #475569;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    color: #2563eb;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+
+    background: #ffffff;
+}
+
+.products-table {
+    width: 100%;
+    min-width: 780px;
+
+    border-collapse: collapse;
+}
+
+.products-table thead {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.products-table th,
+.products-table td {
+    padding: 14px 16px;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    text-align: left;
+    vertical-align: middle;
+}
+
+.products-table tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+.products-table tbody tr:hover {
+    background: #eff6ff;
+}
+
+.table-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    white-space: nowrap;
+}
+
+.btn-small {
+    min-height: 36px;
+    padding: 7px 12px;
+
+    font-size: 0.85rem;
+}
+
+.empty-state {
+    padding: 32px !important;
+
+    text-align: center !important;
+
+    color: #64748b;
+}
+
+
+/* ================================= */
+/* FORMULARIOS */
+/* ================================= */
+
+.form-card {
+    width: 100%;
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    padding: 34px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+            0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.form-card h1 {
+    margin: 4px 0 8px;
+}
+
+.form-description {
+    margin-bottom: 28px;
+
+    color: #64748b;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #334155;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+            0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-row {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.form-actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 26px;
+}
+
+@media (max-width: 768px) {
+
+    .products-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .products-header > .btn {
+        width: 100%;
+    }
+
+    .form-card {
+        padding: 24px 18px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+
+    .table-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .table-actions .btn,
+    .table-actions button {
+        width: 100%;
+    }
+}

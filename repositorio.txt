@@ -1,0 +1,21 @@
+EVIDENCIAS GA7-220501096-AA2-EV01 Y GA7-220501096-AA2-EV02
+
+Proyecto:
+Sistema de Papelería SENA
+
+Aprendiz:
+Carlos Alfredo Montoya Goez
+
+Repositorio GitHub:
+https://github.com/CarlosAlfredo4200/Codificaci-n-de-m-dulos-del-software-GA7-220501096-AA2-EV01.git
+
+Tecnologías principales:
+Java 21
+JDBC
+SQL Server
+Servlets
+JSP
+Apache Tomcat
+Maven
+Git
+GitHub
