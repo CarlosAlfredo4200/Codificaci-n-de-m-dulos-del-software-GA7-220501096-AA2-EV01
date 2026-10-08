@@ -17,15 +17,23 @@ public class ConexionBD {
     private static final String PASSWORD =
             System.getenv("PAPELERIA_DB_PASSWORD");
 
-    public static Connection obtenerConexion()
-            throws SQLException {
+    public static Connection obtenerConexion() throws SQLException {
 
         if (PASSWORD == null || PASSWORD.isBlank()) {
             throw new SQLException(
-                    "No se encontró la variable de entorno " +
-                            "PAPELERIA_DB_PASSWORD."
+                    "No se encontró la variable de entorno PAPELERIA_DB_PASSWORD."
             );
         }
+
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        } catch (ClassNotFoundException e) {
+            throw new SQLException(
+                    "No se encontró el driver JDBC de SQL Server.",
+                    e
+            );
+        }
+
         return DriverManager.getConnection(
                 URL,
                 USUARIO,

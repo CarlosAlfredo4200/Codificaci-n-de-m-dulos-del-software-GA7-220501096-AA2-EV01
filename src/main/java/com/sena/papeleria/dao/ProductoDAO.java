@@ -5,7 +5,11 @@ import com.sena.papeleria.model.Producto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductoDAO {
 
@@ -43,12 +47,12 @@ public class ProductoDAO {
 
     public void listarProductos() {
 
-        String sql = "SELECT * FROM producto";
+        String sql = "SELECT * FROM producto ORDER BY id";
 
         try (
                 Connection conexion = ConexionBD.obtenerConexion();
                 PreparedStatement statement = conexion.prepareStatement(sql);
-                var resultado = statement.executeQuery()
+                ResultSet resultado = statement.executeQuery()
         ) {
 
             System.out.println("==============================================");
@@ -83,13 +87,13 @@ public class ProductoDAO {
     public boolean actualizarProducto(Producto producto) {
 
         String sql = """
-            UPDATE producto
-            SET nombre = ?,
-                descripcion = ?,
-                cantidad = ?,
-                precio = ?
-            WHERE id = ?
-            """;
+                UPDATE producto
+                SET nombre = ?,
+                    descripcion = ?,
+                    cantidad = ?,
+                    precio = ?
+                WHERE id = ?
+                """;
 
         try (
                 Connection conexion = ConexionBD.obtenerConexion();
@@ -139,5 +143,81 @@ public class ProductoDAO {
 
             return false;
         }
+    }
+
+    public List<Producto> obtenerProductos() {
+
+        List<Producto> productos = new ArrayList<>();
+
+        String sql = "SELECT * FROM producto ORDER BY id";
+
+        try (
+                Connection conexion = ConexionBD.obtenerConexion();
+                PreparedStatement statement = conexion.prepareStatement(sql);
+                ResultSet resultado = statement.executeQuery()
+        ) {
+
+            while (resultado.next()) {
+
+                Producto producto = new Producto(
+                        resultado.getInt("id"),
+                        resultado.getString("nombre"),
+                        resultado.getString("descripcion"),
+                        resultado.getInt("cantidad"),
+                        resultado.getDouble("precio")
+                );
+
+                productos.add(producto);
+            }
+
+        } catch (SQLException e) {
+
+            System.err.println(
+                    "Error al obtener productos: " + e.getMessage()
+            );
+        }
+
+        return productos;
+    }
+
+    public Producto obtenerProductoPorId(int id) {
+
+        String sql = """
+            SELECT id, nombre, descripcion, cantidad, precio
+            FROM producto
+            WHERE id = ?
+            """;
+
+        try (
+                Connection conexion = ConexionBD.obtenerConexion();
+                PreparedStatement statement = conexion.prepareStatement(sql)
+        ) {
+
+            statement.setInt(1, id);
+
+            try (ResultSet resultado = statement.executeQuery()) {
+
+                if (resultado.next()) {
+
+                    return new Producto(
+                            resultado.getInt("id"),
+                            resultado.getString("nombre"),
+                            resultado.getString("descripcion"),
+                            resultado.getInt("cantidad"),
+                            resultado.getDouble("precio")
+                    );
+                }
+            }
+
+        } catch (SQLException e) {
+
+            System.err.println(
+                    "Error al obtener producto por ID: " + e.getMessage()
+            );
+
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
